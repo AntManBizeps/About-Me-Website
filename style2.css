@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.header {
+  padding: 100px;
+  text-align: center;
+  background-image: url("kodujacy.webp");
+  color: #000000;
+}
+
+.navbar {
+    background-color: #252525;
+    padding: 15px 0;
+    flex-direction: column;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+}
+
+.nav-item a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.nav-item a:active {
+    background-color: #0056b3;
+}
+
+
+.footer {
+    background-color: #111; /* Ciemne tło */
+    color: #33ff33; /* Zielony tekst */
+    padding: 20px;
+    text-align: center;
+    font-family: 'VT323', monospace; /* Retro czcionka */
+    position: relative;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+    border-top: 1px solid #33ff33; /* Zielona linia na górze stopki */
+    padding-top: 10px;
+}
+
+.about_container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    background-color: #111; /* Ciemne tło jak stare terminale */
+}
+
+.about_left {
+  flex: 100%;
+  position: static;
+  top: 20px;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.contact-info {
+    margin-top: 20px;
+    color: #33ff33;
+    font-family: 'VT323', monospace;
+    text-shadow: 2px 2px 5px rgba(51, 255, 51, 0.5);
+    text-align: center;
+}
+
+.contact-info h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.contact-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info li {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.contact-info a {
+    color: #33ff33;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.about_left img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(51, 255, 51, 0.5);
+  margin-top: 40px;
+}
+.about_right {
+  flex: 100%;
+  padding: 20px;
+  color: #33ff33; /* Zielony neonowy tekst jak na starych ekranach */
+  font-family: 'VT323', monospace;
+  text-shadow: 2px 2px 5px rgba(51, 255, 51, 0.5);
+}
+
+.about_right h1 {
+    font-size: 28px;
+    color: #33ff33;
+    text-transform: uppercase;
+    border-bottom: #33ff33;
+    padding-bottom: 5px;
+}
+
+.about_right p {
+    font-size: 20px;
+    line-height: 1.6;
+
+}
+
+.project {
+    background-color: #111;
+    color: #33ff33;
+    padding: 20px;
+    font-family: 'VT323', monospace;
+  }
+  
+  .full-description {
+    display: none; /* Ukrywamy pełny opis na początku */
+    margin-top: 10px;
+  }
+
+  .toggle-checkbox {
+    display: none; /* Ukrywamy checkboxa */
+  }
+  
+  .toggle-checkbox:checked + .toggle-btn + .full-description {
+    display: block; /* Pokazujemy pełny opis, jeśli checkbox jest zaznaczony */
+  }
+  
+  .toggle-checkbox:checked + .toggle-btn {
+    background-color: #006400; /* Zmieniamy kolor przycisku po kliknięciu */
+  }
+  
+  .toggle-btn {
+    background-color: #33ff33;
+    color: #111;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'VT323', monospace;
+  }
+  
+  .toggle-btn:hover {
+    background-color: #006400;
+  }
+
+  .code-box {
+  background-color: #111;
+  color: #33ff33;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(51, 255, 51, 0.5);
+  font-family: 'VT323', monospace;
+}
+
+.code-box pre {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 5px;
+  overflow-x: auto;
+  max-width: 100%;
+  word-wrap: break-word;
+  white-space: pre-wrap; /* pozwala na zawijanie linii w kodzie */
+}
+
+.code-box code {
+  font-size: 18px;
+}
+
+  
+
+@media screen and (min-width: 700px) {
+  .about_container, .navbar .nav-list{   
+    flex-direction: row;
+  }
+
+  .about_right {
+      flex: 67%;
+  }
+
+  .about_left {
+    flex: 33%;
+    position: -webkit-sticky; /* Dla Safari */
+    position: sticky;
+  }
+
+  
+}

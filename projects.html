@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Antoni Adamczyk - Projects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style2.css">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<header class="header"></header>
+
+<nav class="navbar">
+    <ul class="nav-list">
+        <li class="nav-item"><a href="home2.html"><b>ABOUT ME</b></a></li>
+        <li class="nav-item"><a href="projects.html"><b>PROJECTS</b></a></li>
+        <li class="nav-item"><a href="hobbies.html"><b>HOBBIES</b></a></li>
+    </ul>
+</nav>
+
+<section class="project">
+    <h2>Diffie-Hellman Key Exchange</h2>
+    <p class="short-description">Simple implementation of Diffie-Hellman protocol in given finite field written in  Java.</p>
+    
+    <input type="checkbox" id="toggle1" class="toggle-checkbox">
+    <label for="toggle1" class="toggle-btn">Pokaż więcej</label>
+    
+    <div class="full-description">
+        <p>A finite field (or Galois field) is a set of elements in which the operations of addition, 
+        subtraction, multiplication, and division (except by zero) are defined and behave similarly 
+        to the familiar arithmetic operations on integers. However, finite fields contain a limited number 
+        of elements, unlike the infinite set of integers or real numbers. The size of the finite field is
+         typically a prime number or a power of a prime. Finite fields play a crucial role in areas like 
+         cryptography and error correction, where mathematical structures with specific properties are 
+         required. </p>
+         <p>The Diffie-Hellman key exchange is a cryptographic protocol that allows two parties to 
+            securely exchange cryptographic keys over a public channel. The protocol relies on the 
+            difficulty of solving the discrete logarithm problem in a finite field, which makes it 
+            computationally infeasible for an attacker to determine the shared secret even if they 
+            intercept all the public communication. In the Diffie-Hellman scheme, both parties select a
+             large prime number and a primitive root modulo that prime. They each choose a private key, 
+             compute their public key, exchange the public keys, and then use the public keys and their 
+             private keys to generate a shared secret key. This shared key can then be used for encryption,
+              ensuring that even though the public keys are exchanged openly, the actual shared key 
+              remains confidential.</p>
+
+        <section class="code-box">
+        <h2>Division in a finite field</h2>
+        <pre><code>
+            public FiniteField1 divide(FiniteField1 other) {
+                try {
+                    if (!other.aGetter().equals(BigInteger.ZERO)) {
+                        BigInteger inverse = this.modInverse(other.aGetter());
+                        BigInteger a1 = a;
+                        BigInteger b = inverse;
+                        BigInteger c = BigInteger.ZERO;
+
+                        while (!b.equals(BigInteger.ZERO)) {
+                            if (b.mod(BigInteger.TWO).equals(BigInteger.ONE)) {
+                                c = myMod(c.add(a1));
+                            }
+                            a1 = myMod(a1.multiply(BigInteger.TWO));
+                            b = b.divide(BigInteger.TWO);
+                        }
+                        return new FiniteField1(c);
+                    } else {
+                        throw new ArithmeticException("Division by zero");
+                    }
+                } catch (ArithmeticException e) {
+                    System.err.println("Dividing by zero not allowed!");
+                    return new FiniteField1(new BigInteger("0"));
+                }
+            }
+        </code></pre>
+        </section>
+              
+        <p>In my project, I implemented the Diffie-Hellman key exchange protocol.
+             The system works by having two users each generate their own private key, 
+             compute a public key based on a chosen generator, and then exchange their public keys. 
+             Upon receiving the public key of the other party, each user uses their own private key 
+             and the other party’s public key to compute the shared secret. This project showcases the 
+             effectiveness of finite fields in creating secure cryptographic systems, while also 
+             providing an understanding of the importance of the underlying mathematics that make
+             protocols like Diffie-Hellman secure.</p>
+    </div>
+  </section>
+
+  <section class="project">
+    <h2>Bookstore</h2>
+    <p class="short-description">Spring Boot based library management website that allows users to create 
+        accounts, search for books using filters, borrow  and return them. It provides a structured way 
+        to manage book lending and user interactions.</p>
+    
+    <input type="checkbox" id="toggle2" class="toggle-checkbox">
+    <label for="toggle2" class="toggle-btn">Pokaż więcej</label>
+    
+    <div class="full-description">
+        <p>The Bookstore project is a web application designed to provide a fully functional online store 
+            for books. The application allows users to register, log in, browse and rent books. It also 
+            includes an admin panel where administrators can manage books, users, and orders.</p>
+         <ul>
+            <li>Spring Security is used to manage authentication and authorization processes.</li>
+            <li>Users can register with a unique username, email, and password.</li>
+            <li>There are different roles such as USER and ADMIN with separate privileges.</li>
+            <li>The application uses Spring Data JPA to interact with the database.</li>
+            <li>JPA entities are used to represent these tables in the application code, which makes database interaction seamless.</li>
+            
+        </ul>
+
+        <section class="code-box">
+        <h2>customized loadUserByUsername method </h2>
+        <pre><code>
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        Member member = memberRepository.findByEmail(username);
+        if (member != null) {
+            return User.builder()
+                    .username(member.getEmail())
+                    .password(member.getPassword())
+                    .roles("MEMBER")
+                    .build();
+        }
+
+        Librarian librarian = librarianRepository.findByEmail(username);
+        if (librarian != null) {
+            return User.builder()
+                    .username(librarian.getEmail())
+                    .password(librarian.getPassword())
+                    .roles("LIBRARIAN")
+                    .build();
+        }
+
+        throw new UsernameNotFoundException("User not found");
+    }
+        </code></pre>
+        </section>
+              
+        <p>This Bookstore project is an example of an application where Spring Boot, 
+            Spring Security, JPA, and Web Technologies are used to build a secure and scalable website. 
+            With this project, I gained experience in backend 
+            development, secure user authentication, data management using JPA, and integrating 
+            frontend elements with dynamic server-side content.</p>
+    </div>
+  </section>
+
+  <section class="project">
+    <h2>Chinese Checkers</h2>
+    <p class="short-description">Multiplayer game created in JavaFX in a 2-people team using a client-server architecture. 
+        Players can compete in real-time as well as replay saved games. 
+        The implementation includes network communication (sockets), data synchronization between clients,
+         and an interactive user interface.</p>
+    
+    <input type="checkbox" id="toggle3" class="toggle-checkbox">
+    <label for="toggle3" class="toggle-btn">Pokaż więcej</label>
+    
+    <div class="full-description">
+        <p>Chinese Checkers is a strategy board game for 2 to 6 players, played on a star-shaped board 
+            with 121 spaces. The goal is to move all your pieces from your starting triangle to the 
+            opposite side before your opponents do. Players take turns moving one piece at a time, either 
+            by moving to an adjacent space or by jumping over other pieces in a chain. The game encourages
+             strategic planning, long jumps, and blocking opponents. </p>
+        <p>Features:</p>
+        <ul>
+            <li>Real-time game for up to 6 players per game.</li>
+            <li>Possibility to replace other players with bots.</li>
+            <li>History of previous games with an option of rewatching them.</li>
+        </ul>
+    </div>
+  </section>
+  
+
+
+<footer class="footer">
+    <div class="footer-bottom">
+        <p>&copy; 2025 Antoni Adamczyk</p>
+    </div>
+</footer>
+
+</body>
+</html>
+
+
