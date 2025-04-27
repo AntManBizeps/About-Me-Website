@@ -5,12 +5,15 @@
 
 body {
   margin: 0;
+  background-color: #111;
+  height: 100%;
+
 }
 
 .header {
   padding: 100px;
   text-align: center;
-  background-image: url("kodujacy.webp");
+  background-image: url("../resources/kodujacy.webp");
   color: #000000;
 }
 
@@ -18,14 +21,68 @@ body {
     background-color: #252525;
     padding: 15px 0;
     flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.menu-toggle:hover {
+  background-color: #444;
+  transform: scale(1.1);
+}
+
+.menu-toggle.active {
+  transform: rotate(90deg);
+}
+
+.hidden {
+  display: none;
 }
 
 .nav-list {
     list-style: none;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 30px;
+    transform: translateY(-50px); /* Początkowo schowane poza ekranem */
+    animation: slideIn 0.5s forwards; /* Animacja przesunięcia */
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+.nav-list.show {
+    display: flex;
 }
 
 .nav-item a {
@@ -33,7 +90,6 @@ body {
     text-decoration: none;
     font-size: 18px;
     padding: 10px 20px;
-    transition: background-color 0.3s, color 0.3s;
     border-radius: 5px;
 }
 
@@ -44,22 +100,75 @@ body {
 
 .nav-item a:active {
     background-color: #0056b3;
+}               
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.gallery,
+.gallery > .column {
+  padding: 5px;
+}
+
+.column {
+  width: 100%;
+  padding: 5px;
+}
+
+
+.gallery:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.content {
+  background-color: #111;
+  color: #33ff33;
+  padding: 20px;
+  font-family: 'VT323', monospace;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(51, 255, 51, 0.5);
+}
+
+.content img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(51, 255, 51, 0.5);
+}
+.content img:hover {
+  transform: scale(1.0);
+  transition: transform 0.3s;
+}
+.content h3 {
+  font-size: 20px;
+  color: #33ff33;
+  text-shadow: 2px 2px 5px rgba(51, 255, 51, 0.5);
 }
 
 
 .footer {
-    background-color: #111; /* Ciemne tło */
-    color: #33ff33; /* Zielony tekst */
+    background-color: #111;
+    color: #33ff33;
     padding: 20px;
     text-align: center;
-    font-family: 'VT323', monospace; /* Retro czcionka */
+    font-family: 'VT323', monospace;
     position: relative;
+    bottom: 0;
+    width: 100%;
+    left: 0;
 }
 
 .footer-bottom {
     margin-top: 20px;
     font-size: 14px;
-    border-top: 1px solid #33ff33; /* Zielona linia na górze stopki */
+    border-top: 1px solid #33ff33;
     padding-top: 10px;
 }
 
@@ -69,7 +178,7 @@ body {
     flex-direction: column;
     gap: 20px;
     padding: 40px;
-    background-color: #111; /* Ciemne tło jak stare terminale */
+    background-color: #111;
 }
 
 .about_left {
@@ -124,7 +233,7 @@ body {
 .about_right {
   flex: 100%;
   padding: 20px;
-  color: #33ff33; /* Zielony neonowy tekst jak na starych ekranach */
+  color: #33ff33;
   font-family: 'VT323', monospace;
   text-shadow: 2px 2px 5px rgba(51, 255, 51, 0.5);
 }
@@ -151,20 +260,20 @@ body {
   }
   
   .full-description {
-    display: none; /* Ukrywamy pełny opis na początku */
+    display: none;
     margin-top: 10px;
   }
 
   .toggle-checkbox {
-    display: none; /* Ukrywamy checkboxa */
+    display: none;
   }
   
   .toggle-checkbox:checked + .toggle-btn + .full-description {
-    display: block; /* Pokazujemy pełny opis, jeśli checkbox jest zaznaczony */
+    display: block;
   }
   
   .toggle-checkbox:checked + .toggle-btn {
-    background-color: #006400; /* Zmieniamy kolor przycisku po kliknięciu */
+    background-color: #006400;
   }
   
   .toggle-btn {
@@ -197,7 +306,7 @@ body {
   overflow-x: auto;
   max-width: 100%;
   word-wrap: break-word;
-  white-space: pre-wrap; /* pozwala na zawijanie linii w kodzie */
+  white-space: pre-wrap;
 }
 
 .code-box code {
@@ -206,8 +315,35 @@ body {
 
   
 
-@media screen and (min-width: 700px) {
-  .about_container, .navbar .nav-list{   
+@media screen and (min-width: 768px) {
+  .column {
+    width: 50%;
+  }
+
+  .content img:hover {
+    transform: scale(1.1);
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .navbar {
+    height: auto;
+    flex-direction: row;
+    opacity: 1;
+    justify-content: center;
+  }
+
+  .nav-list {
+    display:flex;
+    flex-direction: row;
+    gap: 40px;
+    transform: none;
+    animation: none;
+}
+
+  .about_container {   
     flex-direction: row;
   }
 
@@ -222,4 +358,15 @@ body {
   }
 
   
+}
+
+@media screen and (min-width: 1200px) {
+  .column {
+    width: 20%;
+  }
+
+  .content img:hover {
+    transform: scale(2);
+
+  }
 }

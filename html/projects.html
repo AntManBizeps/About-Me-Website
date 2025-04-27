@@ -4,18 +4,24 @@
 <title>Antoni Adamczyk - Projects</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style2.css">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="../css/style2.css">
+<link rel="icon" type="image/x-icon" href="../resources/favicon.ico">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
 </head>
 <body>
 
 <header class="header"></header>
 
-<nav class="navbar">
-    <ul class="nav-list">
+
+<nav id="menu" class="navbar">
+    <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+    <ul id="nav-list" class="nav-list">
         <li class="nav-item"><a href="index.html"><b>ABOUT ME</b></a></li>
         <li class="nav-item"><a href="projects.html"><b>PROJECTS</b></a></li>
-        <li class="nav-item"><a href="hobbies.html"><b>HOBBIES</b></a></li>
+        <li class="nav-item"><a href="gallery.html"><b>HOBBIES</b></a></li>
     </ul>
 </nav>
 
@@ -47,7 +53,7 @@
 
         <section class="code-box">
         <h2>Division in a finite field</h2>
-        <pre><code>
+        <pre><code class="language-java">
             public FiniteField1 divide(FiniteField1 other) {
                 try {
                     if (!other.aGetter().equals(BigInteger.ZERO)) {
@@ -110,30 +116,30 @@
 
         <section class="code-box">
         <h2>customized loadUserByUsername method </h2>
-        <pre><code>
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        <pre><code class="language-java">
+            @Override
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Member member = memberRepository.findByEmail(username);
-        if (member != null) {
-            return User.builder()
-                    .username(member.getEmail())
-                    .password(member.getPassword())
-                    .roles("MEMBER")
-                    .build();
-        }
+                Member member = memberRepository.findByEmail(username);
+                if (member != null) {
+                    return User.builder()
+                            .username(member.getEmail())
+                            .password(member.getPassword())
+                            .roles("MEMBER")
+                            .build();
+                }
 
-        Librarian librarian = librarianRepository.findByEmail(username);
-        if (librarian != null) {
-            return User.builder()
-                    .username(librarian.getEmail())
-                    .password(librarian.getPassword())
-                    .roles("LIBRARIAN")
-                    .build();
-        }
+                Librarian librarian = librarianRepository.findByEmail(username);
+                if (librarian != null) {
+                    return User.builder()
+                            .username(librarian.getEmail())
+                            .password(librarian.getPassword())
+                            .roles("LIBRARIAN")
+                            .build();
+                }
 
-        throw new UsernameNotFoundException("User not found");
-    }
+                throw new UsernameNotFoundException("User not found");
+            }
         </code></pre>
         </section>
               
@@ -178,6 +184,7 @@
     </div>
 </footer>
 
+<script src="../js/menu.js"></script>
 </body>
 </html>
 

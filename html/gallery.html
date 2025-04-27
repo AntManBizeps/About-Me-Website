@@ -1,91 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Antoni Adamczyk - Hobbies</title>
+<title>Antoni Adamczyk - About</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style2.css">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="../css/style2.css">
+<link rel="icon" type="image/x-icon" href="../resources/favicon.ico">
 </head>
 <body>
 
 <header class="header"></header>
 
-<nav class="navbar">
-    <ul class="nav-list">
+<nav id="menu" class="navbar">
+    <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+    <ul id="nav-list" class="nav-list">
         <li class="nav-item"><a href="index.html"><b>ABOUT ME</b></a></li>
         <li class="nav-item"><a href="projects.html"><b>PROJECTS</b></a></li>
-        <li class="nav-item"><a href="hobbies.html"><b>HOBBIES</b></a></li>
+        <li class="nav-item"><a href="gallery.html"><b>HOBBIES</b></a></li>
     </ul>
 </nav>
 
-<div class="about_container">
-    <div class="about_left">
-        <img src="malta.jpeg" alt="Photo of Malta">
-    </div>
-    <div class="about_right">
-        <h1>Travels</h1>
+<div class="gallery">
+    <div class="column">
+      <div class="content">
+        <img class="image" id="image1" alt="Malta photo" style="width:100%">
+        <h3>Travels</h3>
         <p>I’ve always had a passion for traveling. It allows me to explore new cultures, meet interesting 
             people, and discover beautiful places. Traveling broadens my perspective, inspires creativity,
              and gives me a sense of adventure. Whether it's a weekend getaway or a long journey, 
              every trip brings something unique and memorable.</p>
+      </div>
     </div>
-</div>
-
-<div class="about_container">
-    <div class="about_left">
-        <img src="sniezka.jpeg" alt="Photo of Sniezka">
-    </div>
-    <div class="about_right">
-        <h1>Hiking</h1>
+    <div class="column">
+      <div class="content">
+        <img class="image" id="image2" alt="Mountains" style="width:100%">
+        <h3>Hiking</h3>
         <p>Hiking is one of my favorite activities because it allows me to connect with nature while 
             challenging myself physically. Being out on a trail, surrounded by beautiful landscapes, 
             gives me a sense of peace and accomplishment. It’s a great way to clear my mind, stay fit, 
             and explore the outdoors.</p>
+      </div>
     </div>
-</div>
-
-<div class="about_container">
-    <div class="about_left">
-        <img src="silownia.jpeg" alt="Gym Photo">
-    </div>
-    <div class="about_right">
-        <h1>Gym</h1>
+    <div class="column">
+      <div class="content">
+        <img class="image" id="image3" alt="Gym photo" style="width:100%">
+        <h3>Gym</h3>
         <p>I enjoy going to the gym as it helps me stay physically fit and improves my overall well-being. 
             It’s a great way to push my limits, build strength, and relieve stress. Whether it’s 
             lifting weights or doing calisthenics, I find the gym to be a motivating environment that helps me set 
             and achieve personal goals while maintaining a healthy lifestyle.</p>
+      </div>
     </div>
-</div>
-
-<div class="about_container">
-    <div class="about_left">
-        <img src="tance.jpeg" alt="Dance Photo">
-    </div>
-    <div class="about_right">
-        <h1>Dancing</h1>
+    <div class="column">
+      <div class="content">
+        <img class="image" id="image4" alt="Dancing photo" style="width:100%">
+        <h3>Dancing</h3>
         <p>Dancing is one of my greatest passions, and I love exploring different styles like discofox, hustle, 
             rock 'n roll, and west coast swing. These dances allow me to express myself, stay active, 
             and have fun. Whether it’s the fast-paced energy of rock 'n roll or the smooth, flowing 
             movements of west coast swing, dancing brings joy and connection, and it’s a perfect way 
             to unwind and socialize.</p>
+      </div>
     </div>
-</div>
-
-<div class="about_container">
-    <div class="about_left">
-        <img src="biegi.jpeg" alt="Running Photo">
-    </div>
-    <div class="about_right">
-        <h1>Running</h1>
-        <p>It's a simple yet powerful activity that allows me to challenge myself, improve my endurance, 
+    <div class="column">
+        <div class="content">
+          <img class="image" id="image5" alt="Antoni photo" style="width:100%">
+          <h3>Running</h3>
+          <p>It's a simple yet powerful activity that allows me to challenge myself, improve my endurance, 
             and experience the outdoors in a different way. </p>
-        <p>In November, I’m aiming to complete the marathon in Athens. It’s been a long-term goal of mine,
+          <p>In November, I’m aiming to complete the marathon in Athens. It’s been a long-term goal of mine,
              and I’m excited to take on this challenge. Training has been tough, but the idea of running 
              in such a historic city keeps me motivated. I can’t wait to cross the finish line and 
              accomplish this personal milestone!</p>
-    </div>
-</div>
+        </div>
+      </div>
+  </div>
 
 
 <footer class="footer">
@@ -94,6 +83,9 @@
     </div>
 </footer>
 
+
+<script src="../js/gallery.js"></script>
+<script src="../js/menu.js"></script>
 </body>
 </html>
 

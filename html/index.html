@@ -4,24 +4,25 @@
 <title>Antoni Adamczyk - About</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style2.css">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="../css/style2.css">
+<link rel="icon" type="image/x-icon" href="../resources/favicon.ico">
 </head>
 <body>
 
 <header class="header"></header>
 
-<nav class="navbar">
-    <ul class="nav-list">
+<nav id="menu" class="navbar">
+    <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+    <ul id="nav-list" class="nav-list">
         <li class="nav-item"><a href="index.html"><b>ABOUT ME</b></a></li>
         <li class="nav-item"><a href="projects.html"><b>PROJECTS</b></a></li>
-        <li class="nav-item"><a href="hobbies.html"><b>HOBBIES</b></a></li>
+        <li class="nav-item"><a href="gallery.html"><b>HOBBIES</b></a></li>
     </ul>
 </nav>
 
 <div class="about_container">
     <div class="about_left" id="about">
-        <img src="my-photo.jpg" alt="Zdjęcie Antoni Adamczyk">
+        <img src="../resources/my-photo.jpg" alt="Zdjęcie Antoni Adamczyk">
         <div class="contact-info">
             <h3>Contact Information</h3>
             <ul>
@@ -83,6 +84,7 @@
     </div>
 </footer>
 
+<script src="../js/menu.js"></script>
 </body>
 </html>
 
