@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  background-color: #111;
+  color: #33ff33;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styl dla całego MAIN */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Styl dla kontrolek */
+#controls, fieldset {
+    background-color: #222;
+    border: 2px solid #33ff33;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column; /* <<< UWAGA: ustawiamy kolumnowo */
+    align-items: flex-start; /* <<< wyrównanie do lewej */
+    gap: 15px;
+  }
+  
+  /* Styl każdego labela */
+  #controls label {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    width: 100%; /* <<< każdy label zajmuje pełną szerokość */
+  }
+  
+  /* Styl inputów */
+  #controls input[type="file"],
+  #controls input[type="number"] {
+    margin-top: 5px;
+    padding: 8px;
+    background-color: #111;
+    border: 1px solid #33ff33;
+    color: #33ff33;
+    border-radius: 5px;
+    font-family: 'Fira Code', monospace;
+  }
+  
+  /* Kontener na przyciski */
+  #buttonGroup {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  /* Styl dla przycisków */
+  #buttonGroup button {
+    flex: 1;
+    padding: 10px;
+    background-color: #33ff33;
+    color: #111;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Fira Code', monospace;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  #buttonGroup button:hover {
+    background-color: #006400;
+    transform: scale(1.05);
+  }
+  
