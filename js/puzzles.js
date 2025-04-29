@@ -30,16 +30,15 @@
       sourceCtx = sourceCanvas.getContext('2d');
 
       const imgRatio = img.naturalWidth / img.naturalHeight;
-      const canvasRatio = size / size;
       let sx, sy, sWidth, sHeight;
-      if (imgRatio > canvasRatio) {
+      if (imgRatio > 1) {
         sHeight = img.naturalHeight;
-        sWidth = img.naturalHeight * canvasRatio;
+        sWidth = img.naturalHeight;
         sx = (img.naturalWidth - sWidth) / 2;
         sy = 0;
       } else {
         sWidth = img.naturalWidth;
-        sHeight = img.naturalWidth / canvasRatio;
+        sHeight = img.naturalWidth;
         sx = 0;
         sy = (img.naturalHeight - sHeight) / 2;
       }
@@ -196,7 +195,7 @@
       cols = +colsInput.value;
       playing = true;
       initTiles();
-      shuffleTiles(Math.floor(rows * cols * 10 * Math.log(rows * cols)));
+      shuffleTiles(rows * cols * 10);
       msgDiv.textContent = '';
       restartBtn.disabled = false;
       resizeCanvas();
@@ -205,7 +204,7 @@
     });
 
     restartBtn.addEventListener('click', () => {
-      shuffleTiles(Math.ceil(Math.floor(rows * cols * 10 * Math.log(rows * cols))));
+      shuffleTiles(rows * cols * 10);
       msgDiv.textContent = '';
       playing = true;
       draw();
