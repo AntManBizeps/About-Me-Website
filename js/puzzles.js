@@ -196,7 +196,7 @@
       cols = +colsInput.value;
       playing = true;
       initTiles();
-      shuffleTiles(Math.ceil((rows * cols) / 2) * 10 * Math.log(rows*cols));
+      shuffleTiles(Math.floor(rows * cols * 10 * Math.log(rows * cols)));
       msgDiv.textContent = '';
       restartBtn.disabled = false;
       resizeCanvas();
@@ -205,7 +205,7 @@
     });
 
     restartBtn.addEventListener('click', () => {
-      shuffleTiles(Math.ceil((rows * cols) / 2) * 10 * Math.log(rows*cols));
+      shuffleTiles(Math.ceil(Math.floor(rows * cols * 10 * Math.log(rows * cols))));
       msgDiv.textContent = '';
       playing = true;
       draw();
